@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+<form class="form-control" method="POST" action="/show_random_cars" role="form">
+    <div class="form-group">
+        <div class="input-group">
+            <input name="brand">
+        </div>
+      <br>
+      <button class="btn btn-success" type="submit">SEARCH</button>
+    </div>
+</form>
+
+
+{% if cars is defined %}
+
+  <table class="table" id="cars_table">
+    <thead>
+        <th>Brand:</th>
+        <th>Model:</th>
+        <th>Price:</th>
+    </thead>
+    <tbody>
+        {% for car in cars %}
+        <tr>
+          <td>{{ car.merk }}</td>
+          <td>{{ car.handelsbenaming }}</td>
+          <td>{{ car.catalogusprijs }}</td>  
+        </tr>
+        {% endfor %}
+    </tbody>
+
+  </table>
+
+{% else %}
+<p>Choose a car</p>
+{% endif %}
+
+<script>
+    $(document).ready( function () {
+        $('#cars_table').DataTable();
+    } );
+</script>
+
+
+{% endblock %}
