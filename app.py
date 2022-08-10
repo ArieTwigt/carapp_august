@@ -14,6 +14,7 @@ def hello():
 @app.route('/show_car')
 def show_car():
     car = get_car_by_plate("TB725F")
+    return car
 
 
 # execute/run the application
